@@ -37,6 +37,18 @@ main {
     padding: 20px 0;
 }
 
+.hero_img {
+    width: 100%;
+}
+
+.hero_img img {
+    width: 100%;
+    height: auto;
+    /* keeps proportions */
+    display: block;
+    /* removes extra bottom spacing */
+}
+
 /* Footer */
 footer {
     background-color: #1a202c;
