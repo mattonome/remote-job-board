@@ -19,10 +19,17 @@ nav a {
     text-decoration: none;
     margin-left: 15px;
     font-weight: bold;
+    align-items: center;
 }
 
 nav a:hover {
     text-decoration: underline;
+}
+
+nav img {
+    align-items: left;
+    width: 150px;
+    margin-top: 20%;
 }
 
 /* Main spacing */
