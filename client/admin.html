@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <h1>🛠 Admin Dashboard</h1>
+
+    <!-- Add New Job Form -->
+    <h2>Add New Job</h2>
+    <form id="add-job-form">
+        <label>Title: <input type="text" name="title" required /></label>
+        <label>Company: <input type="text" name="company" required /></label>
+        <label>Location: <input type="text" name="location" /></label>
+        <label>Salary (USD): <input type="number" name="salary_usd" required /></label>
+        <label>Description: <textarea name="description" required></textarea></label>
+        <button type="submit">Add Job</button>
+    </form>
+    <p id="admin-status-message"></p>
+
+    <!-- Application Submissions -->
+    <h2>📋 Applications Dashboard</h2>
+    <div id="apps-container"></div>
+
+    <script>
+        // Handle job form submission
+        document.getElementById('add-job-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const form = e.target;
+            const newJob = {
+                title: form.title.value,
+                company: form.company.value,
+                location: form.location.value,
+                salary_usd: form.salary_usd.value,
+                description: form.description.value
+            };
+
+            const res = await fetch('http://localhost:3000/api/jobs', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(newJob)
+            });
+
+            const result = await res.json();
+            document.getElementById('admin-status-message').textContent = result.message;
+            form.reset();
+        });
+
+        // Load job applications
+        async function loadApplications() {
+            const res = await fetch('http://localhost:3000/api/applications');
+            const apps = await res.json();
+            const container = document.getElementById('apps-container');
+            apps.forEach(app => {
+                const div = document.createElement('div');
+                div.className = 'job-card';
+                div.innerHTML = `
+          <p><strong>Job ID:</strong> ${app.job_id}</p>
+          <p><strong>Name:</strong> ${app.name}</p>
+          <p><strong>Email:</strong> ${app.email}</p>
+          <p><strong>Cover Letter:</strong> ${app.cover_letter}</p>
+          <p><strong>Applied At:</strong> ${new Date(app.applied_at).toLocaleString()}</p>
+        `;
+                container.appendChild(div);
+            });
+        }
+
+        loadApplications();
+    </script>
+</body>
+
+</html>
