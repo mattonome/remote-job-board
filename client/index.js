@@ -12,12 +12,12 @@ document.addEventListener('DOMContentLoaded', async () => {
       const div = document.createElement('div');
       div.className = 'job-card';
       div.innerHTML = `
-        <h3>${job.title}</h3>
-        <p><strong>Company:</strong> ${job.company}</p>
-        <p><strong>Location:</strong> ${job.location || 'Remote'}</p>
-        <p><strong>Salary:</strong> ${job.salary_usd ? `$${job.salary_usd}` : 'Not specified'}</p>
-        <p>${job.description?.slice(0, 150) || job.description || 'No description'}</p>
-        <p><strong>Apply:</strong> Job ID ${job.id || job.title}</p>
+        <h3>${job.title || job.position || "Untitled Job"}</h3>
+        <p><strong>Company:</strong> ${job.company || "Unknown"}</p>
+        <p><strong>Location:</strong> ${job.location || "Remote"}</p>
+        <p><strong>Salary:</strong> ${job.salary_usd ? `$${job.salary_usd}` : "Not specified"}</p>
+        <p>${job.description?.slice(0, 150) || job.description || "No description"}</p>
+        <p><strong>Apply:</strong> Job ID ${job.id || job.title || "N/A"}</p>
       `;
       jobList.appendChild(div);
     });
