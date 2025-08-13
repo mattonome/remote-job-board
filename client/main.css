@@ -1,25 +1,38 @@
 /* Header */
+/* Header */
 header {
     background-color: #1a202c;
     color: white;
     padding: 15px 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    /* center everything */
     align-items: center;
     flex-wrap: wrap;
+    flex-direction: column;
+    /* stack h1 and nav vertically */
+    text-align: center;
 }
 
 header h1 {
-    margin: 0;
+    margin: 0 0 10px 0;
+    /* space below the title */
     font-size: 1.5rem;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* center nav items */
+    gap: 15px;
+    /* even spacing */
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    margin-left: 15px;
     font-weight: bold;
-    align-items: center;
 }
 
 nav a:hover {
@@ -27,9 +40,10 @@ nav a:hover {
 }
 
 nav img {
-    align-items: left;
-    width: 150px;
-    margin-top: 20%;
+    width: 60px;
+    /* smaller logo */
+    height: auto;
+    margin: 0;
 }
 
 /* Main spacing */
