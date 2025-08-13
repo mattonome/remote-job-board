@@ -1,6 +1,5 @@
 // client/index.js
-
-const API_URL = 'https://remote-job-board-ze6g.onrender.com'; // replace after deploying backend
+const API_URL = 'https://remote-job-board-ze6g.onrender.com/api/jobs';
 
 document.addEventListener('DOMContentLoaded', async () => {
   const jobList = document.getElementById('job-list');
