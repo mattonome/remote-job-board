@@ -1,10 +1,12 @@
 // client/index.js
 
+const API_URL = 'https://your-backend-name.onrender.com/api/jobs'; // replace after deploying backend
+
 document.addEventListener('DOMContentLoaded', async () => {
   const jobList = document.getElementById('job-list');
 
   try {
-    const res = await fetch('http://localhost:3000/api/jobs');
+    const res = await fetch(API_URL);
     const jobs = await res.json();
 
     jobs.forEach(job => {
